@@ -33,35 +33,35 @@ def pixivApi():
 
 # 获取作者详情
 def user_detail(request):
-    api = pixivPassSniAuthApi()
+    api = pixivAuthApi()
     json_result = api.user_detail(request.GET.get('user_id'))
     return HttpResponse(json.dumps(json_result))
 
 
 # 用户作品列表 
 def user_illusts(request):
-    api = pixivPassSniAuthApi()
+    api = pixivAuthApi()
     json_result = api.user_illusts(request.GET.get('user_id'))
     return HttpResponse(json.dumps(json_result))
 
 
 # 作品详情 (无需登录，同PAPI.works)
 def illust_detail(request):
-    api = pixivPassSniAuthApi()
+    api = pixivAuthApi()
     json_result = api.illust_detail(request.GET.get('illust_id'))
     return HttpResponse(json.dumps(json_result))
 
 
 # 相关作品列表
 def illust_related(request):
-    api = pixivPassSniAuthApi()
+    api = pixivAuthApi()
     json_result = api.illust_related(request.GET.get('illust_id'))
     return HttpResponse(json.dumps(json_result))
 
 
 # 作品相关推荐-下一页 (.parse_qs(next_url) 用法)
 def illust_related_parse_qs(request):
-    api = pixivPassSniAuthApi()
+    api = pixivAuthApi()
     next_qs = api.parse_qs(request.GET.get('next_url'))
     json_result = api.illust_related(**next_qs)
     return HttpResponse(json.dumps(json_result))
@@ -70,21 +70,21 @@ def illust_related_parse_qs(request):
 # 插画推荐 (Home - Main) 
 # content_type: [illust, manga]
 def illust_recommended(request):
-    api = pixivPassSniAuthApi()
+    api = pixivAuthApi()
     json_result = api.illust_recommended()
     return HttpResponse(json.dumps(json_result))
 
 
 # xxxx-xx-xx的过去一周排行
 def illust_ranking(request):
-    api = pixivPassSniAuthApi()
+    api = pixivAuthApi()
     json_result = api.illust_ranking('week', date=request.GET.get('date'))
     return HttpResponse(json.dumps(json_result))
 
 
 # 按标签搜索作品
 def search_illust(request):
-    api = pixivPassSniAuthApi()
+    api = pixivAuthApi()
     json_result = api.search_illust(request.GET.get('keyword'))
     return HttpResponse(json.dumps(json_result))
 
@@ -104,7 +104,7 @@ def search_illust(request):
 #   female_r18
 #   r18g
 def ranking_all(request):
-    api = pixivPassSniAuthApi()
+    api = pixivAuthApi()
     json_result = api.ranking_all(request.GET.get('mode'), 1, 50)
     return HttpResponse(json.dumps(json_result))
 
