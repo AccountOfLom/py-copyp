@@ -4,9 +4,6 @@ from pixivpy3 import *
 
 import json
 
-_USERNAME = "lishalom@sina.com"
-_PASSWORD = "p6569653"
-
 
 def pixivPassSniAuthApi():
     # api = AppPixivAPI()
@@ -15,13 +12,13 @@ def pixivPassSniAuthApi():
     api.require_appapi_hosts(hostname="public-api.secure.pixiv.net")
     api.set_accept_language('zh-cn')
 
-    api.login(_USERNAME, _PASSWORD)
+    api.login("lishalom@sina.com", "p6569653")
     return api
 
 
 def pixivAuthApi():
     api = AppPixivAPI()
-    api.login(_USERNAME, _PASSWORD)
+    api.login("lishalom@sina.com", "p6569653")
     return api
 
 
