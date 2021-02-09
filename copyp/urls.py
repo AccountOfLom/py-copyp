@@ -12,5 +12,5 @@ urlpatterns = [
     url("illust_ranking", views.illust_ranking),
     url("search_illust", views.search_illust),
     url("ranking_all", views.ranking_all),
-
+    url("image_download", views.image_download),
 ]
