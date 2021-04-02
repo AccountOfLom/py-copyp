@@ -62,7 +62,7 @@ def user_illusts(request):
 # 用户作品列表-下一页 (.parse_qs(next_url) 用法)
 def user_illusts_parse_qs(request):
     api = pixivPassSniAuthApi()
-    next_qs = api.parse_qs(request.GET.get('next_url'))
+    next_qs = api.parse_qs(request.POST.get('next_url'))
     json_result = api.user_illusts(**next_qs)
     return HttpResponse(json.dumps(json_result))
 
