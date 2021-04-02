@@ -62,12 +62,10 @@ def user_illusts(request):
 # 用户作品列表-下一页 (.parse_qs(next_url) 用法)
 def user_illusts_parse_qs(request):
     api = pixivPassSniAuthApi()
-    # next_qs = api.parse_qs(request.POST.get('next_url'))
-    json_result = api.user_illusts(user_id=34090973, filter='for_ios', type='illust', offset=30)
-    # json_result = api.user_illusts(**next_qs)
+    next_qs = api.parse_qs(request.GET.get('next_url'))
+    json_result = api.user_illusts(**next_qs)
     return HttpResponse(json.dumps(json_result))
-
-
+    
 
 # 作品详情 (无需登录，同PAPI.works)
 def illust_detail(request):
