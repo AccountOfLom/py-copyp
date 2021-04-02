@@ -63,8 +63,8 @@ def user_illusts(request):
 def user_illusts_parse_qs(request):
     api = pixivPassSniAuthApi()
     # next_qs = api.parse_qs(request.POST.get('next_url'))
-    next_qs = api.parse_qs("https://app-api.pixiv.net/v1/user/illusts?user_id=34090973&filter=for_ios&type=illust&offset=30")
-    json_result = api.user_illusts(**next_qs)
+    json_result = api.user_illusts(user_id='34090973', filter='for_ios', type='illust', offset='30')
+    # json_result = api.user_illusts(**next_qs)
     return HttpResponse(json.dumps(json_result))
 
 
